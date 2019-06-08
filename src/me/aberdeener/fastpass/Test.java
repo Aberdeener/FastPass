@@ -9,7 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class FastPassListener implements Listener {
+public class Test implements Listener {
 
 	@SuppressWarnings("deprecation")
 	@EventHandler
@@ -22,10 +22,6 @@ public class FastPassListener implements Listener {
 		// set "inventory" variable to the name of the open inventory
 		String attraction = event.getInventory().getName();
 
-		// if they click outside of the inventory
-		if (clicked == null) {
-			return;
-		}
 		// if clicked item is lime (yes)
 		if (clicked.getType() == Material.LIME_CONCRETE) {
 			// move block to original spot
@@ -53,7 +49,13 @@ public class FastPassListener implements Listener {
 			player.closeInventory();
 			player.sendMessage(ChatColor.RED + "Cancelled FastPass!");
 		}
+		// if they click neither
+		else {
+			// move block to original spot
+			event.setCancelled(true);
+			// Closes the inventory
+			player.closeInventory();
+		}
 
 	}
-
 }
