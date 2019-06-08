@@ -9,7 +9,7 @@ A Spigot plugin for the RCThemePark.
 - fastpass.reload - Give access to `/fastpass reload`
 
 ### Usage
-- Use an NPC plugin at the entrance of each attraction. Make the player execute the command `/fastpass teleport <attraction` when they click the NPC.
+- Use an NPC plugin at the entrance of each attraction. Make the player execute the command `/fastpass teleport <attraction>` when they click the NPC.
 
 ### Todo
 - Fix verification, add meta info rather than just `Material.PAPER`
