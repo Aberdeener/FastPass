@@ -1,0 +1,10 @@
+name: FastPass
+main: me.aberdeener.fastpass.FastPass
+version: 1.0
+authors: [Aberdeener]
+description: Add FastPass compatibility to the RCThemePark server.
+api-version: 1.13
+commands:
+   fastpass:
+      usage: /fastpass <teleport|reload>
+      description: Main command.

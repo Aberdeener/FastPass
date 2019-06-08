@@ -1,0 +1,47 @@
+attractions:
+  BigThunderMountain:
+     x: 1
+     y: 1
+     z: 1
+     pitch: 1
+     yaw: 1
+  HyperSpaceMountain:
+     x: 2
+     y: 2
+     z: 2
+  StarTours:
+     x: 3
+     y: 3
+     z: 3
+  BuzzLightYearLaserBlast:
+     x: 4
+     y: 4
+     z: 4
+  IndianaJones:
+     x: 5
+     y: 5
+     z: 5
+  PiratesOfTheCaribbean:
+     x: 6
+     y: 6
+     z: 6
+  PeterPan:
+     x: 7
+     y: 7
+     z: 7
+  TowerOfTerror:
+     x: 8
+     y: 8
+     z: 8
+  RockNRollCoaster:
+     x: 9
+     y: 9
+     z: 9
+  Ratatouille:
+     x: 10
+     y: 10
+     z: 10
+  CrushesCoaster:
+     x: 11
+     y: 11
+     z: 11
