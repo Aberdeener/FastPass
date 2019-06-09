@@ -33,7 +33,7 @@ public class FastPassCmd implements CommandExecutor {
 			else {
 
 				if (args.length == 0) {
-					p.sendMessage(ChatColor.DARK_RED + "Correct Usage:  /fastpass <teleport|reload>");
+					p.sendMessage(ChatColor.DARK_RED + "Correct Usage:  /fastpass <teleport|store|reload>");
 					return true;
 				}
 
@@ -47,6 +47,12 @@ public class FastPassCmd implements CommandExecutor {
 
 					FastPass.getInstance().reloadConfig();
 					sender.sendMessage(ChatColor.GREEN + "Config Reloaded!");
+					return true;
+				}
+
+				else if (args[0].equalsIgnoreCase("store")) {
+					sender.sendMessage(ChatColor.GREEN + "Purchase FastPasses at our store: " + ChatColor.YELLOW
+							+ FastPass.getInstance().getConfig().getString("store-url"));
 					return true;
 				}
 
@@ -68,62 +74,15 @@ public class FastPassCmd implements CommandExecutor {
 							p.sendMessage(ChatColor.DARK_RED + "Correct Usage:  /fastpass teleport <attraction>");
 							return true;
 						}
+						 
 
 						else if (args[1].equalsIgnoreCase("BigThunderMountain")) {
-							p.openInventory(FastPassInv.BigThunderMountain);
+							String attraction = "BigThunderMountain";
+							p.openInventory(FastPassInv.FastPassConfirm(attraction));
 							return true;
 						}
 
-						else if (args[1].equalsIgnoreCase("HyperSpaceMountain")) {
-							p.openInventory(FastPassInv.HyperSpaceMountain);
-							return true;
-
-						}
-
-						else if (args[1].equalsIgnoreCase("StarTours")) {
-							p.openInventory(FastPassInv.StarTours);
-							return true;
-						}
-
-						else if (args[1].equalsIgnoreCase("BuzzLightYearLaserBlast")) {
-							p.openInventory(FastPassInv.BuzzLightYearLaserBlast);
-							return true;
-						}
-
-						else if (args[1].equalsIgnoreCase("IndianaJones")) {
-							p.openInventory(FastPassInv.IndianaJones);
-							return true;
-						}
-
-						else if (args[1].equalsIgnoreCase("PiratesOfTheCaribbean")) {
-							p.openInventory(FastPassInv.PiratesOfTheCaribbean);
-							return true;
-						}
-
-						else if (args[1].equalsIgnoreCase("PeterPan")) {
-							p.openInventory(FastPassInv.PeterPan);
-							return true;
-						}
-
-						else if (args[1].equalsIgnoreCase("TowerOfTerror")) {
-							p.openInventory(FastPassInv.TowerOfTerror);
-							return true;
-						}
-
-						else if (args[1].equalsIgnoreCase("RockNRollCoaster")) {
-							p.openInventory(FastPassInv.RockNRollCoaster);
-							return true;
-						}
-
-						else if (args[1].equalsIgnoreCase("Ratatouille")) {
-							p.openInventory(FastPassInv.Ratatouille);
-							return true;
-						}
-
-						else if (args[1].equalsIgnoreCase("CrushesCoaster")) {
-							p.openInventory(FastPassInv.CrushesCoaster);
-							return true;
-						}
+						// add more here
 
 						else {
 							p.sendMessage(ChatColor.DARK_RED + "Invalid Attraction!");
@@ -136,6 +95,11 @@ public class FastPassCmd implements CommandExecutor {
 						p.sendMessage(ChatColor.DARK_RED + "You need a FastPass to run this command!");
 						return true;
 					}
+				}
+				
+				else {
+					p.sendMessage(ChatColor.DARK_RED + "Correct Usage:  /fastpass <teleport|store|reload>");
+					return true;
 				}
 
 			}

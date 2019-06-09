@@ -1,65 +1,69 @@
 package me.aberdeener.fastpass;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class FastPassInv {
 
-	public static Inventory BigThunderMountain = Bukkit.createInventory(null, 9, "BigThunderMountain");
-	static {
-		BigThunderMountain.setItem(2, new ItemStack(Material.LIME_CONCRETE, 1));
-		BigThunderMountain.setItem(6, new ItemStack(Material.RED_CONCRETE, 1));
+	private static ItemStack holder0, holder1, yesBlock, holder4, buyBlock, holder6, holder7, noBlock, holder9;
+
+	public static Inventory FastPassConfirm(String attraction) {
+		Inventory FastPassConfirm = Bukkit.createInventory(null, 9, attraction);
+		FastPassConfirm.addItem(holder0, holder1, yesBlock, holder4, buyBlock, holder6, holder7, noBlock, holder9);
+		return FastPassConfirm;
 	}
-	public static Inventory HyperSpaceMountain = Bukkit.createInventory(null, 9, "HyperSpaceMountain");
-	static {
-		HyperSpaceMountain.setItem(2, new ItemStack(Material.LIME_CONCRETE, 1));
-		HyperSpaceMountain.setItem(6, new ItemStack(Material.RED_CONCRETE, 1));
-	}
-	public static Inventory StarTours = Bukkit.createInventory(null, 9, "StarTours");
-	static {
-		StarTours.setItem(2, new ItemStack(Material.LIME_CONCRETE, 1));
-		StarTours.setItem(6, new ItemStack(Material.RED_CONCRETE, 1));
-	}
-	public static Inventory BuzzLightYearLaserBlast = Bukkit.createInventory(null, 9, "BuzzLightYearLaserBlast");
-	static {
-		BuzzLightYearLaserBlast.setItem(2, new ItemStack(Material.LIME_CONCRETE, 1));
-		BuzzLightYearLaserBlast.setItem(6, new ItemStack(Material.RED_CONCRETE, 1));
-	}
-	public static Inventory IndianaJones = Bukkit.createInventory(null, 9, "IndianaJones");
-	static {
-		IndianaJones.setItem(2, new ItemStack(Material.LIME_CONCRETE, 1));
-		IndianaJones.setItem(6, new ItemStack(Material.RED_CONCRETE, 1));
-	}
-	public static Inventory PiratesOfTheCaribbean = Bukkit.createInventory(null, 9, "PiratesOfTheCaribbean");
-	static {
-		PiratesOfTheCaribbean.setItem(2, new ItemStack(Material.LIME_CONCRETE, 1));
-		PiratesOfTheCaribbean.setItem(6, new ItemStack(Material.RED_CONCRETE, 1));
-	}
-	public static Inventory PeterPan = Bukkit.createInventory(null, 9, "PeterPan");
-	static {
-		PeterPan.setItem(2, new ItemStack(Material.LIME_CONCRETE, 1));
-		PeterPan.setItem(6, new ItemStack(Material.RED_CONCRETE, 1));
-	}
-	public static Inventory TowerOfTerror = Bukkit.createInventory(null, 9, "TowerOfTerror");
-	static {
-		TowerOfTerror.setItem(2, new ItemStack(Material.LIME_CONCRETE, 1));
-		TowerOfTerror.setItem(6, new ItemStack(Material.RED_CONCRETE, 1));
-	}
-	public static Inventory RockNRollCoaster = Bukkit.createInventory(null, 9, "RockNRollCoaster");
-	static {
-		RockNRollCoaster.setItem(2, new ItemStack(Material.LIME_CONCRETE, 1));
-		RockNRollCoaster.setItem(6, new ItemStack(Material.RED_CONCRETE, 1));
-	}
-	public static Inventory Ratatouille = Bukkit.createInventory(null, 9, "Ratatouille");
-	static {
-		Ratatouille.setItem(2, new ItemStack(Material.LIME_CONCRETE, 1));
-		Ratatouille.setItem(6, new ItemStack(Material.RED_CONCRETE, 1));
-	}
-	public static Inventory CrushesCoaster = Bukkit.createInventory(null, 9, "CrushesCoaster");
-	static {
-		CrushesCoaster.setItem(2, new ItemStack(Material.LIME_CONCRETE, 1));
-		CrushesCoaster.setItem(6, new ItemStack(Material.RED_CONCRETE, 1));
+	
+
+	public static void init() {
+
+		holder0 = new ItemStack (Material.GLASS_PANE);
+		ItemMeta holder0Meta = holder0.getItemMeta();
+		holder0Meta.setDisplayName("1");
+		holder0.setItemMeta(holder0Meta);
+		
+		holder1 = new ItemStack (Material.GLASS_PANE);
+		ItemMeta holder1Meta = holder1.getItemMeta();
+		holder1Meta.setDisplayName("2");
+		holder1.setItemMeta(holder1Meta);
+		
+		yesBlock = new ItemStack(Material.LIME_CONCRETE, 1);
+		ItemMeta yesBlockMeta = yesBlock.getItemMeta();
+		yesBlockMeta.setDisplayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Continue...");
+		yesBlock.setItemMeta(yesBlockMeta);
+		
+		holder4 = new ItemStack (Material.GLASS_PANE);
+		ItemMeta holder4Meta = holder4.getItemMeta();
+		holder4Meta.setDisplayName("3");
+		holder4.setItemMeta(holder4Meta);
+
+		buyBlock = new ItemStack(Material.PAPER, 1);
+		ItemMeta buyBlockMeta = buyBlock.getItemMeta();
+		buyBlockMeta.setDisplayName(ChatColor.WHITE + "" + ChatColor.ITALIC + "Buy FastPasses");
+		buyBlock.setItemMeta(buyBlockMeta);
+		
+		holder6 = new ItemStack (Material.GLASS_PANE);
+		ItemMeta holder6Meta = holder6.getItemMeta();
+		holder6Meta.setDisplayName("4");
+		holder6.setItemMeta(holder6Meta);
+		
+		holder7 = new ItemStack (Material.GLASS_PANE);
+		ItemMeta holder7Meta = holder7.getItemMeta();
+		holder7Meta.setDisplayName("5");
+		holder7.setItemMeta(holder7Meta);
+
+		noBlock = new ItemStack(Material.RED_CONCRETE);
+		ItemMeta noBlockMeta = noBlock.getItemMeta();
+		noBlockMeta.setDisplayName(ChatColor.RED + "" + ChatColor.BOLD + "Cancel...");
+		noBlock.setItemMeta(noBlockMeta);
+		
+		holder9 = new ItemStack (Material.GLASS_PANE);
+		ItemMeta holder9Meta = holder9.getItemMeta();
+		holder9Meta.setDisplayName("6");
+		holder9.setItemMeta(holder9Meta);
+
 	}
 }

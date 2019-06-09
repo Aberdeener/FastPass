@@ -1,3 +1,17 @@
+store-url: http://RCThemePark.com/
+
+blocks:
+  yesBlock:
+    name:
+    lore:
+      1:
+      2:
+  noBlock:
+    name:
+    lore:
+      1: 
+      2: 
+      
 attractions:
   BigThunderMountain:
      x: 1

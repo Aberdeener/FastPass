@@ -14,6 +14,9 @@ public class FastPass extends JavaPlugin implements Listener {
 	public void onEnable() {
 
 		instance = this;
+		
+		// initiate /grant
+		FastPassInv.init();
 
 		getConfig().options().copyDefaults(true);
 		saveConfig();
