@@ -47,7 +47,8 @@ public class FastPassListener implements Listener {
 				// now teleport player to above location
 				Location attractionLoc = new Location(player.getWorld(), x, y, z, pitch, yaw);
 				player.teleport(attractionLoc);
-				player.sendMessage(ChatColor.GREEN + "Welcome to " + attraction + "!");
+				player.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.GREEN
+						+ "Welcome to " + ChatColor.DARK_GREEN + attraction + ChatColor.GREEN + "!");
 			}
 			// if they click red (no)
 			if (clicked.getType() == Material.RED_CONCRETE) {
@@ -55,7 +56,8 @@ public class FastPassListener implements Listener {
 				event.setCancelled(true);
 				// Closes the inventory
 				player.closeInventory();
-				player.sendMessage(ChatColor.RED + "Cancelled FastPass!");
+				player.sendMessage(
+						ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED + "Cancelled FastPass!");
 			}
 
 			if (clicked.getType() == Material.PAPER) {
@@ -63,7 +65,8 @@ public class FastPassListener implements Listener {
 				event.setCancelled(true);
 
 				player.closeInventory();
-				player.sendMessage(ChatColor.GREEN + "Buy FastPasses at our store: " + ChatColor.YELLOW
+				player.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.GREEN
+						+ "Purchase FastPasses at our store: " + ChatColor.YELLOW
 						+ FastPass.getInstance().getConfig().getString("store-url"));
 			} else {
 

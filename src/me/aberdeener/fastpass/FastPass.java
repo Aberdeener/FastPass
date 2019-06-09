@@ -13,14 +13,13 @@ public class FastPass extends JavaPlugin implements Listener {
 	@Override
 	public void onEnable() {
 
+		getConfig().options().copyDefaults(true);
+		saveConfig();
+		
 		instance = this;
 		
 		// initiate /grant
 		FastPassInv.init();
-
-		getConfig().options().copyDefaults(true);
-		saveConfig();
-		reloadConfig();
 
 		// register listeners below
 		registerListeners();

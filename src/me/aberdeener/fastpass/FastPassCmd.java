@@ -18,7 +18,8 @@ public class FastPassCmd implements CommandExecutor {
 
 			// console sender check
 			if (!(sender instanceof Player)) {
-				sender.sendMessage(ChatColor.RED + "[FastPass] Please execute in-game!");
+				sender.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
+						+ "Please execute in-game!");
 				return true;
 			}
 
@@ -26,14 +27,15 @@ public class FastPassCmd implements CommandExecutor {
 
 			// permission check
 			if (!sender.hasPermission("fastpass.use")) {
-				sender.sendMessage(ChatColor.DARK_RED + "You don't have permission to execute this command!");
+				sender.sendMessage(ChatColor.RED + "You don't have permission to execute this command!");
 				return true;
 			}
 
 			else {
 
 				if (args.length == 0) {
-					p.sendMessage(ChatColor.DARK_RED + "Correct Usage:  /fastpass <teleport|store|reload>");
+					p.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
+							+ "Correct Usage:  /fastpass <teleport|store|reload>");
 					return true;
 				}
 
@@ -43,15 +45,19 @@ public class FastPassCmd implements CommandExecutor {
 					if (!sender.hasPermission("fastpass.reload")) {
 						sender.sendMessage(ChatColor.DARK_RED + "You don't have permission to execute this command!");
 						return true;
+					} else {
+						sender.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.GREEN
+								+ "Reloading config...");
+						FastPass.getInstance().reloadConfig();
+						sender.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.GREEN
+								+ "FastPass config reloaded.");
+						return true;
 					}
-
-					FastPass.getInstance().reloadConfig();
-					sender.sendMessage(ChatColor.GREEN + "Config Reloaded!");
-					return true;
 				}
 
 				else if (args[0].equalsIgnoreCase("store")) {
-					sender.sendMessage(ChatColor.GREEN + "Purchase FastPasses at our store: " + ChatColor.YELLOW
+					sender.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.GREEN
+							+ "Purchase FastPasses at our store: " + ChatColor.YELLOW
 							+ FastPass.getInstance().getConfig().getString("store-url"));
 					return true;
 				}
@@ -71,10 +77,10 @@ public class FastPassCmd implements CommandExecutor {
 						// now check for the sub command/argument and send player to the location in
 						// config
 						if (args.length == 1) {
-							p.sendMessage(ChatColor.DARK_RED + "Correct Usage:  /fastpass teleport <attraction>");
+							p.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
+									+ "Correct Usage:  /fastpass teleport <attraction>");
 							return true;
 						}
-						 
 
 						else if (args[1].equalsIgnoreCase("BigThunderMountain")) {
 							String attraction = "BigThunderMountain";
@@ -85,20 +91,23 @@ public class FastPassCmd implements CommandExecutor {
 						// add more here
 
 						else {
-							p.sendMessage(ChatColor.DARK_RED + "Invalid Attraction!");
+							p.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
+									+ "Invalid Attraction!");
 							return true;
 						}
 
 					}
 
 					else {
-						p.sendMessage(ChatColor.DARK_RED + "You need a FastPass to run this command!");
+						p.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
+								+ "You need a FastPass to run this command!");
 						return true;
 					}
 				}
-				
+
 				else {
-					p.sendMessage(ChatColor.DARK_RED + "Correct Usage:  /fastpass <teleport|store|reload>");
+					p.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
+							+ "Correct Usage:  /fastpass <teleport|store|reload>");
 					return true;
 				}
 
