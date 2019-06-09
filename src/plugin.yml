@@ -1,10 +1,10 @@
 name: FastPass
 main: me.aberdeener.fastpass.FastPass
-version: 0.3.1
-authors: [Aberdeener]
+version: 0.3.2
+authors: [Aberdeener, RoboticsMilan]
 description: Add FastPass compatibility to the RCThemePark server.
 api-version: 1.13
 commands:
    fastpass:
-      usage: /fastpass <teleport|reload>
+      usage: /fastpass <teleport|store|reload>
       description: Main command.

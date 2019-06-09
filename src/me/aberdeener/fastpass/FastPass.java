@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class FastPass extends JavaPlugin implements Listener {
 
@@ -18,8 +19,12 @@ public class FastPass extends JavaPlugin implements Listener {
 		
 		instance = this;
 		
-		// initiate /grant
-		FastPassInv.init();
+		// initiate /fastpass teleport <attraction>
+        new BukkitRunnable() {
+            public void run() {
+                FastPassInv.init();
+            }
+        }.runTaskTimer(FastPass.getInstance(), 0L, 10L);
 
 		// register listeners below
 		registerListeners();
