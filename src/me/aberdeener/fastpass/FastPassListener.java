@@ -10,7 +10,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class FastPassListener implements Listener {
-	@SuppressWarnings("deprecation")
+
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent event) {
 
@@ -21,7 +21,7 @@ public class FastPassListener implements Listener {
 		ItemStack clicked = event.getCurrentItem();
 		
 		// set "inventory" variable to the name of the open inventory
-		String attraction = event.getInventory().getName();
+		String attraction = event.getView().getTitle();
 		
 		// if they click outside of the inventory
 		if (clicked == null) {
@@ -29,26 +29,32 @@ public class FastPassListener implements Listener {
 		}
 		
 		// if they click in their crafting slots
-		if (event.getInventory().getName().equals("Crafting")) {
+		if (event.getView().getTitle().equals("Crafting")) {
 			return;
 		}
 		
 		// if their open inventory is named the attraction they entered
-		if (event.getInventory().getName().equals(attraction)) {
+		if (event.getView().getTitle().equals(attraction)) {
+			
 			// if clicked item is lime (yes)
 			if (clicked.getType() == Material.LIME_CONCRETE) {
+				
 				// move block to original spot
 				event.setCancelled(true);
+				
 				// Closes the inventory
 				player.closeInventory();
+				
 				// remove fastpass from players inventory
 				player.getInventory().removeItem(new ItemStack(Material.PAPER, 1));
+				
 				// define x y z coords from config
 				int x = FastPass.getInstance().getConfig().getInt("attractions." + attraction + ".x");
 				int y = FastPass.getInstance().getConfig().getInt("attractions." + attraction + ".y");
 				int z = FastPass.getInstance().getConfig().getInt("attractions." + attraction + ".z");
 				float pitch = FastPass.getInstance().getConfig().getInt("attractions." + attraction + ".pitch");
 				float yaw = FastPass.getInstance().getConfig().getInt("attractions." + attraction + ".yaw");
+				
 				// now teleport player to above location
 				Location attractionLoc = new Location(player.getWorld(), x, y, z, pitch, yaw);
 				player.teleport(attractionLoc);
@@ -74,8 +80,9 @@ public class FastPassListener implements Listener {
 				player.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.GREEN
 						+ "Purchase FastPasses at our store: " + ChatColor.YELLOW
 						+ FastPass.getInstance().getConfig().getString("store-url"));
-			} else {
-
+			} 
+			
+			else {
 				event.setCancelled(true);
 			}
 		}
