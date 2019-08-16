@@ -81,14 +81,12 @@ public class FastPassCmd implements CommandExecutor {
 									+ "Correct Usage:  /fastpass teleport <attraction>");
 							return true;
 						}
-
-						else if (args[1].equalsIgnoreCase("BigThunderMountain")) {
-							String attraction = "BigThunderMountain";
+						
+						else if (FastPass.getInstance().getConfig().contains("attractions.args[1]")) {
+							String attraction = args[1];
 							p.openInventory(FastPassInv.FastPassConfirm(attraction));
 							return true;
 						}
-
-						// add more here
 
 						else {
 							p.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED

@@ -16,18 +16,23 @@ public class FastPassListener implements Listener {
 
 		// set "player" variable to the player who clicked the inv
 		Player player = (Player) event.getWhoClicked();
+		
 		// set "clicked" variable to the item that was clicked
 		ItemStack clicked = event.getCurrentItem();
+		
 		// set "inventory" variable to the name of the open inventory
 		String attraction = event.getInventory().getName();
+		
 		// if they click outside of the inventory
 		if (clicked == null) {
 			return;
 		}
+		
 		// if they click in their crafting slots
 		if (event.getInventory().getName().equals("Crafting")) {
 			return;
 		}
+		
 		// if their open inventory is named the attraction they entered
 		if (event.getInventory().getName().equals(attraction)) {
 			// if clicked item is lime (yes)
@@ -37,7 +42,7 @@ public class FastPassListener implements Listener {
 				// Closes the inventory
 				player.closeInventory();
 				// remove fastpass from players inventory
-				player.getInventory().remove(Material.PAPER);
+				player.getInventory().removeItem(new ItemStack(Material.PAPER, 1));
 				// define x y z coords from config
 				int x = FastPass.getInstance().getConfig().getInt("attractions." + attraction + ".x");
 				int y = FastPass.getInstance().getConfig().getInt("attractions." + attraction + ".y");
@@ -50,10 +55,13 @@ public class FastPassListener implements Listener {
 				player.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.GREEN
 						+ "Welcome to " + ChatColor.DARK_GREEN + attraction + ChatColor.GREEN + "!");
 			}
+			
 			// if they click red (no)
 			if (clicked.getType() == Material.RED_CONCRETE) {
+				
 				// move block to original spot
 				event.setCancelled(true);
+				
 				// Closes the inventory
 				player.closeInventory();
 				player.sendMessage(
@@ -61,9 +69,7 @@ public class FastPassListener implements Listener {
 			}
 
 			if (clicked.getType() == Material.PAPER) {
-
 				event.setCancelled(true);
-
 				player.closeInventory();
 				player.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.GREEN
 						+ "Purchase FastPasses at our store: " + ChatColor.YELLOW

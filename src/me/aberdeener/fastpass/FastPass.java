@@ -24,7 +24,8 @@ public class FastPass extends JavaPlugin implements Listener {
             public void run() {
                 FastPassInv.init();
             }
-        }.runTaskTimer(FastPass.getInstance(), 0L, 10L);
+            // reload the init to update from config
+        }.runTaskTimer(FastPass.getInstance(), 0L, 50L);
 
 		// register listeners below
 		registerListeners();
