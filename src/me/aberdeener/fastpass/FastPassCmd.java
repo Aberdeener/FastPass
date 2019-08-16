@@ -82,7 +82,7 @@ public class FastPassCmd implements CommandExecutor {
 							return true;
 						}
 						
-						else if (FastPass.getInstance().getConfig().contains("attractions.args[1]")) {
+						else if (FastPass.getInstance().getConfig().contains("attractions."  + args[1])) {
 							String attraction = args[1];
 							p.openInventory(FastPassInv.FastPassConfirm(attraction));
 							return true;
