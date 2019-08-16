@@ -34,7 +34,7 @@ public class FastPassCmd implements CommandExecutor {
 			else {
 
 				if (args.length == 0) {
-					p.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
+					sender.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
 							+ "Correct Usage:  /fastpass <teleport|store|reload>");
 					return true;
 				}
@@ -77,19 +77,19 @@ public class FastPassCmd implements CommandExecutor {
 						// now check for the sub command/argument and send player to the location in
 						// config
 						if (args.length == 1) {
-							p.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
+							sender.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
 									+ "Correct Usage:  /fastpass teleport <attraction>");
 							return true;
 						}
-						
-						else if (FastPass.getInstance().getConfig().contains("attractions."  + args[1])) {
+
+						else if (FastPass.getInstance().getConfig().contains("attractions." + args[1])) {
 							String attraction = args[1];
 							p.openInventory(FastPassInv.FastPassConfirm(attraction));
 							return true;
 						}
 
 						else {
-							p.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
+							sender.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
 									+ "Invalid Attraction!");
 							return true;
 						}
@@ -97,14 +97,14 @@ public class FastPassCmd implements CommandExecutor {
 					}
 
 					else {
-						p.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
+						sender.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
 								+ "You need a FastPass to run this command!");
 						return true;
 					}
 				}
 
 				else {
-					p.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
+					sender.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
 							+ "Correct Usage:  /fastpass <teleport|store|reload>");
 					return true;
 				}

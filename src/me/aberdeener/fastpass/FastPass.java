@@ -16,16 +16,16 @@ public class FastPass extends JavaPlugin implements Listener {
 
 		getConfig().options().copyDefaults(true);
 		saveConfig();
-		
+
 		instance = this;
-		
+
 		// initiate /fastpass teleport <attraction>
-        new BukkitRunnable() {
-            public void run() {
-                FastPassInv.init();
-            }
-            // reload the init to update from config
-        }.runTaskTimer(FastPass.getInstance(), 0L, 50L);
+		new BukkitRunnable() {
+			public void run() {
+				FastPassInv.init();
+			}
+			// reload the init to update from config
+		}.runTaskTimer(FastPass.getInstance(), 0L, 50L);
 
 		// register listeners below
 		registerListeners();
