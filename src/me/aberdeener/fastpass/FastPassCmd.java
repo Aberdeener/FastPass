@@ -1,5 +1,6 @@
 package me.aberdeener.fastpass;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -18,8 +19,7 @@ public class FastPassCmd implements CommandExecutor {
 
 			// console sender check
 			if (!(sender instanceof Player)) {
-				sender.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
-						+ "Please execute in-game!");
+				sender.sendMessage(ChatColor.RED + "[FastPass] Please execute in-game!");
 				return true;
 			}
 
@@ -27,7 +27,7 @@ public class FastPassCmd implements CommandExecutor {
 
 			// permission check
 			if (!sender.hasPermission("fastpass.use")) {
-				sender.sendMessage(ChatColor.RED + "You don't have permission to execute this command!");
+				sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command!");
 				return true;
 			}
 
@@ -35,7 +35,7 @@ public class FastPassCmd implements CommandExecutor {
 
 				if (args.length == 0) {
 					sender.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
-							+ "Correct Usage:  /fastpass <teleport|store|reload>");
+							+ "Correct Usage:  /fastpass <teleport|store|reload|update>");
 					return true;
 				}
 
@@ -43,7 +43,7 @@ public class FastPassCmd implements CommandExecutor {
 
 					// reload permission check
 					if (!sender.hasPermission("fastpass.reload")) {
-						sender.sendMessage(ChatColor.DARK_RED + "You don't have permission to execute this command!");
+						sender.sendMessage(ChatColor.DARK_RED + "You do not have permission to execute this command!");
 						return true;
 					} else {
 						sender.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.GREEN
@@ -71,8 +71,7 @@ public class FastPassCmd implements CommandExecutor {
 					fastPass.setItemMeta(fastPassMeta);
 
 					// ensure they have the right item in their inventory
-					// REPLACE WHEN FASTPASS IS FIXED
-					if (p.getInventory().contains(Material.PAPER)) {
+					if (p.getInventory().contains(fastPass)) {
 
 						// now check for the sub command/argument and send player to the location in
 						// config
@@ -103,9 +102,34 @@ public class FastPassCmd implements CommandExecutor {
 					}
 				}
 
+				else if (args[0].equalsIgnoreCase("update")) {
+
+					// reload permission check
+					if (!sender.hasPermission("fastpass.update")) {
+						sender.sendMessage(ChatColor.DARK_RED + "You do not have permission to execute this command!");
+						return true;
+					}
+
+					else {
+
+						if (Updat3r.getInstance().getLatestCached().isNewer()) {
+							
+							sender.sendMessage(ChatColor.GREEN + "Now installing the update!");
+							Updat3r.getInstance().downloadLatest(
+									Updat3r.getInstance().getLatestCached().getDownloadLink(), "FastPass",
+									FastPass.getPlugin());
+							Bukkit.reload();
+						}
+
+						sender.sendMessage(ChatColor.RED + "There is no update available.");
+						return true;
+
+					}
+				}
+
 				else {
 					sender.sendMessage(ChatColor.GOLD + "Themepark" + ChatColor.YELLOW + ": " + ChatColor.RED
-							+ "Correct Usage:  /fastpass <teleport|store|reload>");
+							+ "Correct Usage:  /fastpass <teleport|store|reload|update>");
 					return true;
 				}
 

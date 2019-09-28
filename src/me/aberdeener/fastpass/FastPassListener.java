@@ -28,13 +28,12 @@ public class FastPassListener implements Listener {
 			return;
 		}
 
-		// if they click in their crafting slots
-		if (event.getView().getTitle().equals("Crafting")) {
+		// if their open inventory isnt in the config
+		if (!FastPass.getInstance().getConfig().getConfigurationSection("attractions").contains(attraction)) {
 			return;
 		}
 
-		// if their open inventory is named the attraction they entered
-		if (event.getView().getTitle().equals(attraction)) {
+		else {
 
 			// if clicked item is lime (yes)
 			if (clicked.getType() == Material.LIME_CONCRETE) {

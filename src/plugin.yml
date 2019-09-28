@@ -1,6 +1,6 @@
 name: FastPass
 main: me.aberdeener.fastpass.FastPass
-version: 0.4.4
+version: 0.4.9
 authors: [Aberdeener, RoboticsMilan]
 description: Add FastPass compatibility to the RCThemePark server.
 website: http://RCThemePark.com
