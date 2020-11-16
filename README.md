@@ -1,5 +1,5 @@
 # FastPass
-A Spigot plugin for the RCThemePark.
+A Spigot plugin.
 
 ## Commands
 - `/fastpass <teleport|store|reload>`
